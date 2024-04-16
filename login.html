@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <title>Tela de Login</title>
     <style>
-        body{
+        body {
             font-family: Arial, Helvetica, sans-serif;
             background-image: white;
-            
         }
-        div{
+        div {
             background-color: rgba(0, 0, 0, 0.8);
             position: absolute;
             top: 50%;
@@ -18,15 +18,19 @@
             transform: translate(-50%, -50%);
             padding: 100px;
             border-radius: 20px;
-            color:aliceblue;
+            color: aliceblue;
         }
-        input{
+        input {
             padding: 15px;
             border: none;
             outline: none;
             font: 15px;
+            padding-left: 40px; /* Ajuste para o emoji */
+            box-sizing: border-box; /* Garante que o padding não aumente o tamanho do input */
         }
-        button{
+       
+        
+        button {
             background-color: dodgerblue;
             border: none;
             padding: 15px;
@@ -35,8 +39,26 @@
             color: aliceblue;
             font-size: 15px;
         }
-        button:hover{
+        button:hover {
             background-color: blue;
+        }
+        /* Estilos para os ícones */
+        .icon {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 10px; /* Ajuste de posição para os ícones */
+            color: #ddd;
+        }
+        /* Estilos específicos para o ícone de senha */
+        .icon-password {
+            left: 10px; /* Ajuste de posição para o ícone de senha */
+        }
+        /* Estilos para o link "Esqueci minha senha" */
+        .forgot-password {
+            text-align: center;
+            margin-top: 20px;
+            color: #ddd;
         }
     </style>
 </head>
@@ -46,23 +68,41 @@
         <input type="text" id="Login" placeholder="Usuário"> 
         <br><br>
         <input type="password" id="Senha" placeholder="Senha"> 
+        <i class="bi bi-eye-fill"></i>
+        <br><br>
+        <input type="checkbox" id="lembrar-senha">
+        <label for="lembrar-senha">Lembrar senha</label>
         <br><br>
         <button onclick="logar()">Enviar</button> 
     </div>
 
-    
-
     <script>
-        function logar(){
+         function mostrarSenha() {
+            var senhaInput = document.getElementById("Senha");
+            if (senhaInput.type === "password") {
+                senhaInput.type = "text";
+            } else {
+                senhaInput.type = "password";
+            }
+        }
+
+        function logar() {
             var login = document.getElementById('Login').value;
             var senha = document.getElementById('Senha').value;
+            var lembrarSenhaCheckbox = document.getElementById('lembrar-senha');
 
-            if(login == "admin" && senha == "admin"){
-                alert("Sucesso")
-            }else{
+            if (lembrarSenhaCheckbox.checked) {
+                localStorage.setItem('senhaSalva', senha);
+            } else {
+                localStorage.removeItem('senhaSalva');
+            }
+
+            if (login === "admin" && senha === "admin") {
+                window.location.href = "home.html";
+            } else {
                 alert("Usuário ou senha incorretos");
             }
-        };
+        }
     </script>
 </body>
 </html>
