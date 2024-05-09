@@ -27,9 +27,23 @@
             font: 15px;
             padding-left: 40px; /* Ajuste para o emoji */
             box-sizing: border-box; /* Garante que o padding não aumente o tamanho do input */
+            position: relative; /* Adicionado */
         }
-       
         
+        .password-icon { /* Adicionado */
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 75px; /* Posicionamento do ícone */
+            color: #ddd;
+            cursor: pointer; /* Cursor de mão ao passar por cima */
+            transition: color 0.3s; /* Transição de cor */
+        }
+
+        .password-icon:hover { /* Adicionado */
+            color: dodgerblue; /* Cor do ícone ao passar o mouse */
+        }
+
         button {
             background-color: dodgerblue;
             border: none;
@@ -42,24 +56,6 @@
         button:hover {
             background-color: blue;
         }
-        /* Estilos para os ícones */
-        .icon {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            left: 10px; /* Ajuste de posição para os ícones */
-            color: #ddd;
-        }
-        /* Estilos específicos para o ícone de senha */
-        .icon-password {
-            left: 10px; /* Ajuste de posição para o ícone de senha */
-        }
-        /* Estilos para o link "Esqueci minha senha" */
-        .forgot-password {
-            text-align: center;
-            margin-top: 20px;
-            color: #ddd;
-        }
     </style>
 </head>
 <body>  
@@ -68,7 +64,7 @@
         <input type="text" id="Login" placeholder="Usuário"> 
         <br><br>
         <input type="password" id="Senha" placeholder="Senha"> 
-        <i class="bi bi-eye-fill"></i>
+        <i class="bi bi-eye-fill password-icon" onclick="mostrarSenha()"></i> <!-- Ícone do olho -->
         <br><br>
         <input type="checkbox" id="lembrar-senha">
         <label for="lembrar-senha">Lembrar senha</label>
@@ -77,7 +73,7 @@
     </div>
 
     <script>
-         function mostrarSenha() {
+        function mostrarSenha() {
             var senhaInput = document.getElementById("Senha");
             if (senhaInput.type === "password") {
                 senhaInput.type = "text";
