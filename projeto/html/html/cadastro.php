@@ -1,5 +1,43 @@
+<?php
+if (isset($_POST['submit'])) {
+    $errors = array(); // Array para armazenar mensagens de erro
+
+    // Validar cada campo individualmente
+    if (empty($_POST['productName'])) {
+        $errors[] = "Favor, coloque o nome do produto";
+    }
+
+    if (empty($_POST['productPrice'])) {
+        $errors[] = "Informe um preço";
+    }
+
+    if (empty($_POST['productQuantity'])) {
+        $errors[] = "Informe a quantidade";
+    }
+
+    if (empty($_POST['productSupplier'])) {
+        $errors[] = "Informe o fornecedor do produto";
+    }
+
+    // Se não houver erros, processar o formulário
+    if (empty($errors)) {
+        $nome = $_POST['productName'];
+        $preco = $_POST['productPrice'];
+        $quantidade = $_POST['productQuantity'];
+        $descricao = $_POST['productDescription'];
+        $fornecedor = $_POST['productSupplier'];
+
+        // Conexão com o banco de dados e consulta SQL
+        include_once('config.php');
+       
+        $sql = mysqli_query($conexao,  "INSERT INTO products (nome, preco, quantidade, descricao, fornecedor)
+        VALUES ('$nome', '$preco', '$quantidade', '$descricao', '$fornecedor')");
+        
+      }  
+}
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,41 +53,35 @@
         <section class="header">
             <h2>Cadastro de Produtos</h2>
         </section>
-
-        <form id="form" class="form">
+        <form action="cadastro.php" method="POST" id="productForm" class="form">
             <div class="form-content">
                 <label for="productName"><i class="bi bi-tag"></i> Nome do Produto</label>
-                <input type="text" id="productName" placeholder="Digite o nome do produto"/>
+                <input type="text" id="productName" name="productName" placeholder="Digite o nome do produto" required/>
                 <a>Aqui vai a mensagem de erro</a>
             </div>
-
             <div class="form-content">
-                <label for="productPrice"><i class="bi bi-cash"></i> Preço</label>
-                <input type="number" id="productPrice" placeholder="Digite o preço do produto" min="0" step="0.01" />
+                <label for="productPrice"><i class="bi bi-cash"></i>Preço</label>
+                <input type="number" id="productPrice" name="productPrice" placeholder="Digite o preço do produto" min="0" step="0.01" required/>
                 <a>Aqui vai a mensagem de erro</a>
             </div>
-
             <div class="form-content">
-                <label for="productQuantity"><i class="bi bi-box"></i> Quantidade</label>
-                <input type="number" id="productQuantity" placeholder="Quantidade" min="0" step="1" />
+                <label for="productQuantity"><i class="bi bi-box"></i>Quantidade</label>
+                <input type="number" id="productQuantity" name="productQuantity" placeholder="Quantidade" min="0" step="1" required/>
                 <a>Aqui vai a mensagem de erro</a>
             </div>
-
             <div class="form-content">
-                <label for="productDescription"><i class="bi bi-file-text"></i> Descrição</label>
-                <input type="text" id="productDescription" placeholder="Descrição"/>
+                <label for="productDescription"><i class="bi bi-file-text"></i>Descrição</label>
+                <input type="text" id="productDescription" name="productDescription" placeholder="Descrição" />
                 <a>Aqui vai a mensagem de erro</a>
             </div>
-
             <div class="form-content">
-                <label for="productSupplier"><i class="bi bi-people"></i> Fornecedor</label>
-                <input type="text" id="productSupplier" placeholder="Fornecedor"/>
+                <label for="productSupplier"><i class="bi bi-people"></i>Fornecedor</label>
+                <input type="text" id="productSupplier" name="productSupplier" placeholder="Fornecedor" required/>
                 <a>Aqui vai a mensagem de erro</a>
             </div>
-
-            <button type="submit"><i class="bi bi-plus-circle"></i> Cadastrar produto</button>
+            <button type="submit" name="submit" id="submit" value="1"><i class="bi bi-plus-circle"></i>Cadastrar produto</button>
         </form>
-
+        <div id="productData" class="product-data"></div>
         <nav class="menu-lateral">
             <div class="btn-expandir">
                 <button data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" type="button" class="btn btn-outline-light"><i class="bi bi-list"></i></button>
@@ -62,7 +94,7 @@
                     </a>
                 </li>
                 <li class="item-menu">
-                    <a href="#" onclick="redirecionar('cadastro.html');">
+                    <a href="#" onclick="redirecionar('cadastro.php');">
                         <span class="icon"><i class="bi bi-plus-circle"></i></span>
                         <span class="txt-link">Entrada</span>
                     </a>
@@ -82,6 +114,11 @@
             </ul>
         </nav>
     </div>
-    <script src="../js/cadastro.js"></script>
+    <script>
+function redirecionar(url) {
+    window.location.href = url;
+}
+
+    </script>
 </body>
 </html>
