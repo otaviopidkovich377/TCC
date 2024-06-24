@@ -3,7 +3,7 @@
 body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
-    overflow: hidden; /* Removendo as barras de rolagem */
+    overflow: hidden;
 }
 
 .main-login {
@@ -24,15 +24,14 @@ body {
 }
 
 .card-login {
-    width: 60%;
+    width: 55%;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
     padding: 30px 35px;
     background: #363636;
     border-radius: 20px;
     box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.5);
+    text-align: center; /* Adicionando alinhamento central */
 }
 
 .card-login > h1 {
@@ -44,13 +43,14 @@ body {
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    margin: 10px 0px;
+    align-items: flex-start; /* Alinha os itens à esquerda */
+    justify-content: flex-start; /* Alinha os itens ao topo */
+    margin: 10px 0;
 }
 
 .text-field > input {
     width: 100%;
+    margin-left: -30px;
     border: none;
     border-radius: 10px;
     padding: 15px;
@@ -60,6 +60,7 @@ body {
     box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.5);
     outline: none;
     box-sizing: border-box;
+    margin-left: 0; /* Remove a margem à esquerda */
 }
 
 .text-field > label {
@@ -71,10 +72,10 @@ body {
     color: #b3b3b3;
 }
 
-.btn-login, .btn-signup {
+.btn-login {
     width: 100%;
-    padding: 16px 0px;
-    margin: 25px;
+    padding: 16px 0;
+    margin: 25px 0;
     border: none;
     border-radius: 8px;
     outline: none;
@@ -82,66 +83,56 @@ body {
     font-weight: 700; 
     letter-spacing: 3px;
     cursor: pointer;
-    font-family: 'Roboto', sans-serif; 
-}
-
-.btn-login {
+    font-family: 'Roboto', sans-serif;
     color: #ffffff;
     background: #00b894;
     box-shadow: 0px 10px 40px rgba(0, 184, 148, 0.5);
 }
 
-.btn-signup {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #00b894;
-    border: 2px solid #ffffff;
-    border-radius: 5px;
-    color: #ffffff;
-    text-decoration: none;
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-    cursor: pointer;
-}
-
-.btn-signup:hover {
-    background-color: #ffffff;
-    color: #363636;
-    border-color: #363636;
-}
-
-.forgot-password, .signup-link {
+.signup-link {
     color: #ffffff;
     font-size: 14px;
     margin-top: 10px;
-    text-align: right; 
     cursor: pointer;
 }
 
-.forgot-password:hover, .signup-link:hover {
+.signup-link:hover {
     text-decoration: underline;
+}
+
+.password-wrapper {
+    position: relative;
+   
 }
 
 .toggle-password {
     position: absolute;
-    top: 50%;
+    top: 65%;
     right: 10px;
     transform: translateY(-50%);
     cursor: pointer;
+    font-size: 1.5em;
     color: #ccc;
 }
-
 
 .toggle-password.active {
     color: #00b894;
 }
 
-
-.password-field {
-    position: relative;
+.password-wrapper input {
+    padding-right: 40px;
 }
 
-.password-field input {
-    width: 100%;
-    padding-right: 30px; 
+.error-message {
+    color: #ff0000; /* Cor vermelha */
+    font-size: 14px; /* Tamanho da fonte */
+    margin-top: 5px; /* Margem superior para separar do botão */
+    text-align: center; /* Alinhamento central */
+    opacity: 1;
+    transition: opacity 1s ease-in-out; /* Transição suave */
 }
+
+.error-message.fade-out {
+    opacity: 0;
+}
+

@@ -1,0 +1,178 @@
+body {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+nav.menu-lateral {
+    width: 80px;
+    height: 100%;
+    background-color: #333;
+    padding: 40px 0;
+    box-shadow: 3px 0px 5px rgba(0, 0, 0, 0.5);
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow-y: auto;
+    transition: width 0.5s ease;
+    z-index: 2;
+}
+
+.btn-expandir {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 20px;
+    padding-right: 10px;
+}
+
+.btn-expandir button {
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    line-height: 40px;
+    border: none;
+    background: none;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Alinha o ícone do botão à esquerda */
+    transition: padding-left 0.3s ease;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul li.item-menu {
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+ul li.item-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 22px;
+    padding: 15px 20px;
+    display: block;
+    transition: padding-left 0.5s ease;
+    display: flex; /* Adiciona display flex para alinhar o ícone e o texto */
+    align-items: center; /* Centraliza verticalmente o ícone e o texto */
+}
+
+ul li.item-menu a:hover {
+    background-color: #555;
+}
+
+ul li.item-menu a .icon {
+    margin-right: 10px;
+}
+
+ul li.item-menu a .txt-link {
+    opacity: 0; /* Inicialmente, o texto está oculto */
+    transition: opacity 0.5s ease; 
+}
+
+/* Expandir o menu quando o mouse passa por cima */
+nav.menu-lateral:hover {
+    width: 250px;
+}
+
+nav.menu-lateral:hover ul li.item-menu a .txt-link {
+    opacity: 1; /* Exibe o texto do menu quando o menu está expandido */
+}
+
+nav.menu-lateral:hover .btn-expandir button {
+    padding-left: 20px;
+}
+
+nav.menu-lateral:hover ul li.item-menu a {
+    padding-left: 30px;
+}
+
+/* Estilo da tabela */
+.container {
+    margin-left: 100px; /* Ajusta a margem para deixar espaço para o menu lateral */
+    margin-right: 100px; /* Ajusta a margem para deixar espaço para o menu lateral */
+    padding-top: 60px; /* Ajusta o espaço para a barra superior */
+}
+
+table {
+    font-family: 'Roboto', sans-serif;
+    width: 160%; /* Define a largura da tabela como 100% */
+    margin-left: auto; /* Centraliza a tabela horizontalmente */
+    margin-right: auto; /* Centraliza a tabela horizontalmente */
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-family: Arial, sans-serif; /* Define a fonte */
+}
+
+th {
+    background-color: #333;
+    color: white;
+    position: sticky; /* Torna o cabeçalho da coluna fixo */
+    top: 0; /* Posiciona o cabeçalho no topo */
+    z-index: 1; /* Garante que o cabeçalho fique acima do conteúdo da tabela */
+}
+
+tbody tr:hover {
+    background-color: #f5f5f5;
+}
+tbody tr:last-child td {
+border-bottom: none; /* Remove a borda inferior da última linha da tabela */
+}
+
+tbody tr:hover {
+background-color: #f5f5f5; /* Cor de fundo ao passar o mouse sobre as linhas da tabela */
+}
+
+/* Define uma fonte alternativa */
+body {
+font-family: Arial, sans-serif;
+}
+
+.box-search {
+    display: flex;
+    justify-content: flex-start; /* Alinha à esquerda */
+    margin-left: 6px; /* Ajusta a margem para posicionar perto do campo ID */
+    margin-top: 20px; /* Adiciona margem superior para separar o campo de pesquisa da tabela */
+    margin-bottom: 10px;
+    border-radius: 20px;
+}
+
+input[type="search"] {
+width: 300px;
+padding: 8px;
+border: 1px solid #ccc;
+border-radius: 20px; /* Arredonda as bordas do input */
+outline: none;
+}
+
+input[type="search"]:focus {
+    border-color: #007bff; /* Muda a cor da borda quando o input está focado */
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-left: 10px; /* Adiciona margem à esquerda para separar o botão de pesquisa */
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Altera a cor de fundo quando o botão é hover */
+}

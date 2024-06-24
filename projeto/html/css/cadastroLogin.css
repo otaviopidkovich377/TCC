@@ -4,12 +4,13 @@ body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
     overflow: hidden; /* Removendo as barras de rolagem */
+    background-color: #1e1e1e; /* Alterando a cor de fundo do corpo */
+    color: #ffffff; /* Alterando a cor do texto para branco */
 }
 
 .main-login {
     width: 100vw;
     height: 100vh;
-    background: #1e1e1e;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,7 +25,7 @@ body {
 }
 
 .card-login {
-    width: 60%;
+    width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -40,6 +41,11 @@ body {
     font-weight: 800;
 }
 
+.form {
+    width: 100%; /* Ajustando a largura do formulário */
+    max-width: 400px; /* Definindo uma largura máxima */
+}
+
 .text-field {
     width: 100%;
     display: flex;
@@ -49,8 +55,10 @@ body {
     margin: 10px 0px;
 }
 
-.text-field > input {
-    width: 100%;
+.text-field > input[type="email"],
+.text-field > input[type="text"],
+.text-field > input[type="password"] {
+    width: calc(100% - 30px); /* Ajustando a largura do input */
     border: none;
     border-radius: 10px;
     padding: 15px;
@@ -72,9 +80,9 @@ body {
 }
 
 .btn-login, .btn-signup {
-    width: 100%;
+    width: calc(100% - 30px); /* Ajustando a largura do botão */
     padding: 16px 0px;
-    margin: 25px;
+    margin: 25px auto; /* Centralizando o botão */
     border: none;
     border-radius: 8px;
     outline: none;
@@ -131,17 +139,26 @@ body {
     color: #ccc;
 }
 
-
 .toggle-password.active {
     color: #00b894;
 }
-
 
 .password-field {
     position: relative;
 }
 
-.password-field input {
-    width: 100%;
+.password-field > input {
+    width: calc(100% - 30px); /* Ajustando a largura do input */
     padding-right: 30px; 
+}
+
+/* Estilos para as mensagens de erro e sucesso */
+.error-message {
+    color: #ff0000; /* Vermelho */
+    margin-top: 10px;
+}
+
+.success-message {
+    color: #00ff00; /* Verde */
+    margin-top: 10px;
 }
